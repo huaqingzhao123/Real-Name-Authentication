@@ -1,0 +1,1 @@
+helm install realname .\wingjoyrealname\ --kubeconfig .\configtest

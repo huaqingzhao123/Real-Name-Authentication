@@ -1,2 +1,4 @@
 # Real-Name-Authentication
 Unity实名认证，防沉迷和敏感词过滤，包含服务端
+客户端各个Api调用查看客户端文件夹下的使用说明
+服务器是基于GoLang的，自行更换MySql和Redis数据库地址，部署后可直接使用

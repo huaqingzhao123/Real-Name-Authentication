@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:  # PV建立不要加名称空间，因为PV属于集群级别的
+  name: {{ template "redis.fullname" . }}   # PV名称
+  labels: # 这些labels可以不定义
+    pv: {{ template "redis.fullname" . }}
+spec:  # 这里的spec和volumes里面的一样
+{{- if .Values.persistence.storageClass }}
+{{- if (eq "-" .Values.persistence.storageClass) }}
+  storageClassName: ""
+{{- else }}
+  storageClassName: "{{ .Values.persistence.storageClass }}"
+{{- end }}
+{{- end }}
+  accessModes:  # 设置访问模型
+    - ReadWriteMany
+    - ReadWriteOnce
+    - ReadOnlyMany
+  capacity: # 设置存储空间大小
+    storage: {{ .Values.persistence.size | quote }}
+  persistentVolumeReclaimPolicy: Retain # 回收策略
+  nfs:
+    path: {{.Values.global.nfspath}}
+    server: {{.Values.global.nfsURL}}
