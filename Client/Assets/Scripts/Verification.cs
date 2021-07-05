@@ -93,9 +93,9 @@ public class Verification : MonoSingleton<Verification>
     public int Times = 1;
 
     /// <summary>
-    /// 服务器地址
+    /// 服务器地址，更换为服务器部署后的地址
     /// </summary>
-    string _url = "realname.wingjoy.cn";
+    string _url = "";
 
     /// <summary>
     /// 定义1分钟发起一次请求
